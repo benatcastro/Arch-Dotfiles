@@ -23,12 +23,15 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-from spotify import Spotify
+
+import os
+import subprocess
+from libqtile import hook
+
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
-import os
 
 mod = "mod4"
 terminal = guess_terminal()
@@ -36,34 +39,13 @@ terminal = guess_terminal()
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
-    #Switch Monitors
-    Key([mod], "Tab", lazy.next_screen()),
-    #Spotify Keybindings
-    Key([], "XF86AudioPlay",
-    lazy.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify " "/org/mpris/MediaPlayer2    " "org.mpris.MediaPlayer2.Player.PlayPause"),
-    desc='Audio play'),
-
-    Key([], "XF86AudioNext",
-    lazy.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify " "/org/mpris/MediaPlayer2 " "org.mpris.MediaPlayer2.Player.Next"),
-    desc='Audio next'),
-
-    Key([mod], "XF86AudioNext",
-    lazy.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify " "/org/mpris/MediaPlayer2 " "org.mpris.MediaPlayer2.Player.Previous"),
-    desc='Audio previous'),
-
-    # Volume control
-    Key([], "F2", lazy.spawn("pamixer -d 5")),
-    Key([], "F3", lazy.spawn("pamixer -i 5")),
-    # App launch keybinds
-    Key([mod], "F1", lazy.spawn(os.path.expanduser("~/.config/rofi/launchers/ribbon//launcher.sh")), desc="Open rofi app launcher"),
-    Key([mod], "F12", lazy.spawn(os.path.expanduser("~/.config/rofi/powermenu/powermenu.sh")), desc="Open rofi app launcher"),
-    Key([mod], "F2", lazy.spawn("firefox"), desc="Firefox"),
-    Key([mod], "F3", lazy.spawn("spotify"), desc="Open rofi app launcher"),
+    Key([mod], "F1", lazy.spawn("rofi -show drun"), desc="Spawn rofi"),
+    Key([mod], "F2", lazy.spawn("firefox"), desc="Spawn rofi"),
     # Switch between windows
-    Key([mod], "Left", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "Right", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod], "Down", lazy.layout.down(), desc="Move focus down"),
-    Key([mod], "Up", lazy.layout.up(), desc="Move focus up"),
+    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
+    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
+    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
+    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
     Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
@@ -73,10 +55,10 @@ keys = [
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([mod, "control"], "Left", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([mod, "control"], "Right", lazy.layout.grow_right(), desc="Grow window to the right"),
-    Key([mod, "control"], "Down", lazy.layout.grow_down(), desc="Grow window down"),
-    Key([mod, "control"], "Up", lazy.layout.grow_up(), desc="Grow window up"),
+    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
+    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
+    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
@@ -90,7 +72,7 @@ keys = [
     ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
-    Key(["control"], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
@@ -111,7 +93,7 @@ for i in groups:
             ),
             # mod1 + shift + letter of group = switch to & move focused window to group
             Key(
-           [mod, "shift"],
+                [mod, "shift"],
                 i.name,
                 lazy.window.togroup(i.name, switch_group=True),
                 desc="Switch to & move focused window to group {}".format(i.name),
@@ -124,7 +106,7 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=0, margin=[15, 15, 8, 8]),
+    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -140,62 +122,39 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="Hack",
-    fontsize=20,
+    font="sans",
+    fontsize=12,
     padding=3,
 )
-class colors:
-    black= '282c32' #black
-    red=   'c900ff' #red
-    green= '98c379' #green
-    yellow='e5c07b' #yellow
-    blue=  '61afef' #blue
-    magenta='cb008d' #magente
-    cyan=  'cb008d' #cyan
-    white= 'dcdfe4'  #white
-    pure_white= 'ffffff' #pure_white
-
-#widgets declarations
-groupbox= widget.GroupBox(highlight_method='line', highlight_color=colors.cyan,)
-#Cyan color Arrow
-arrow1= widget.TextBox(text="◢", foreground=colors.cyan, fontsize=150, padding=0)
-arrow2= widget.TextBox(text="◢", foreground=colors.red, fontsize=150, padding=0, background=colors.cyan)
-
-pulsevolume= widget.PulseVolume(update_interval=0.001, background=colors.red, padding=20)
-
-spotify= Spotify(update_interval=0.001, format= "{icon} {artis} - {track}")
-
-windowname = widget.WindowName()
-
-
 extension_defaults = widget_defaults.copy()
+
 screens = [
     Screen(
         top=bar.Bar(
-            background=colors.black,
-            margin=10,
-            widgets=[
-                widget.Spacer(30),
-                groupbox,
-                widget.TextBox(text="━", foreground=colors.cyan, fontsize=25, padding=20),
-                windowname,
-                widget.Spacer(),
-                widget.Clock(fontsize=20),
-                widget.Spacer(),
-                widget.Battery(border='000000'),
-                widget.Spacer(),
-                arrow1,
-                Spotify(update_interval= 0.1, format= "{icon}  {artist} - {track}", background=colors.cyan),
-                arrow2,
-                widget.TextBox(text="𝄞", background=colors.red, fontsize=30),
-                pulsevolume,
-                widget.Spacer(30, background=colors.red)
+            [
+                widget.CurrentLayout(),
+                widget.GroupBox(),
+                widget.Prompt(),
+                widget.WindowName(),
+                widget.Chord(
+                    chords_colors={
+                        "launch": ("#ff0000", "#ffffff"),
+                    },
+                    name_transform=lambda name: name.upper(),
+                ),
+                widget.TextBox("default config", name="default"),
+                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                widget.Systray(),
+                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.Battery(background='56b6c2'),
+                widget.QuickExit(),
             ],
-            size=50,
+            32,
+             border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+             border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
-    )
-
-    ]
+    ),
+]
 
 # Drag floating layouts.
 mouse = [
