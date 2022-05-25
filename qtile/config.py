@@ -39,15 +39,15 @@ keys = [
     #Switch Monitors
     Key([mod], "Tab", lazy.next_screen()),
     #Spotify Keybindings
-    Key([], "XF86AudioPlay",
+    Key(["control"], "F2",
     lazy.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify " "/org/mpris/MediaPlayer2    " "org.mpris.MediaPlayer2.Player.PlayPause"),
     desc='Audio play'),
 
-    Key([], "XF86AudioNext",
+    Key(["control"], "F3",
     lazy.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify " "/org/mpris/MediaPlayer2 " "org.mpris.MediaPlayer2.Player.Next"),
     desc='Audio next'),
 
-    Key([mod], "XF86AudioNext",
+    Key(["control"], "F1",
     lazy.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify " "/org/mpris/MediaPlayer2 " "org.mpris.MediaPlayer2.Player.Previous"),
     desc='Audio previous'),
 
@@ -58,7 +58,8 @@ keys = [
     Key([mod], "F1", lazy.spawn(os.path.expanduser("~/.config/rofi/launchers/ribbon//launcher.sh")), desc="Open rofi app launcher"),
     Key([mod], "F12", lazy.spawn(os.path.expanduser("~/.config/rofi/powermenu/powermenu.sh")), desc="Open rofi app launcher"),
     Key([mod], "F2", lazy.spawn("firefox"), desc="Firefox"),
-    Key([mod], "F3", lazy.spawn("spotify"), desc="Open rofi app launcher"),
+    Key([mod], "F3", lazy.spawn("spotify"), desc="Open Spotify"),
+    Key([mod], "F4", lazy.spawn("slack"), desc="Slack"),
     # Switch between windows
     Key([mod], "Left", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "Right", lazy.layout.right(), desc="Move focus to right"),
@@ -124,7 +125,7 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=0, margin=[15, 15, 8, 8]),
+    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=0, margin=[8, 8, 8, 8]),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -158,8 +159,8 @@ class colors:
 #widgets declarations
 groupbox= widget.GroupBox(highlight_method='line', highlight_color=colors.cyan,)
 #Cyan color Arrow
-arrow1= widget.TextBox(text="◢", foreground=colors.cyan, fontsize=150, padding=0)
-arrow2= widget.TextBox(text="◢", foreground=colors.red, fontsize=150, padding=0, background=colors.cyan)
+arrow1= widget.TextBox(text="◢", foreground=colors.cyan, fontsize=80, padding=-12)
+arrow2= widget.TextBox(text="◢", foreground=colors.red, fontsize=80, padding=-15, background=colors.cyan)
 
 pulsevolume= widget.PulseVolume(update_interval=0.001, background=colors.red, padding=20)
 
@@ -175,24 +176,32 @@ screens = [
             background=colors.black,
             margin=10,
             widgets=[
-                widget.Spacer(30),
-                groupbox,
                 widget.TextBox(text="━", foreground=colors.cyan, fontsize=25, padding=20),
                 windowname,
                 widget.Spacer(),
                 widget.Clock(fontsize=20),
-                widget.Spacer(),
-                widget.Battery(border='000000'),
                 widget.Spacer(),
                 arrow1,
                 Spotify(update_interval= 0.1, format= "{icon}  {artist} - {track}", background=colors.cyan),
                 arrow2,
                 widget.TextBox(text="𝄞", background=colors.red, fontsize=30),
                 pulsevolume,
-                widget.Spacer(30, background=colors.red)
+                widget.Battery(format='Battery : {percent:2.0%} | {hour:d}:{min:02d}', background=colors.red),
+                widget.Spacer(30, background=colors.red),
+                widget.BatteryIcon(background=colors.red, battery=1, update_interval=10)
+            ],
+            size=50),
+        bottom=bar.Bar(
+            background=colors.black,
+            margin=2,
+            widgets=[
+                widget.Spacer(),
+                widget.Spacer(),
+                groupbox,
+                widget.Spacer(),
             ],
             size=50,
-        ),
+            )
     )
 
     ]
