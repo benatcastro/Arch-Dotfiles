@@ -60,6 +60,7 @@ keys = [
     Key([mod], "F2", lazy.spawn("firefox"), desc="Firefox"),
     Key([mod], "F3", lazy.spawn("spotify"), desc="Open Spotify"),
     Key([mod], "F4", lazy.spawn("slack"), desc="Slack"),
+    Key([mod], "F5", lazy.spawn("clion"), desc="clion"),
     # Switch between windows
     Key([mod], "Left", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "Right", lazy.layout.right(), desc="Move focus to right"),
@@ -179,8 +180,6 @@ screens = [
                 widget.TextBox(text="━", foreground=colors.cyan, fontsize=25, padding=20),
                 windowname,
                 widget.Spacer(),
-                widget.Clock(fontsize=20),
-                widget.Spacer(),
                 arrow1,
                 Spotify(update_interval= 0.1, format= "{icon}  {artist} - {track}", background=colors.cyan),
                 arrow2,
@@ -199,6 +198,7 @@ screens = [
                 widget.Spacer(),
                 groupbox,
                 widget.Spacer(),
+                widget.Clock(fontsize=20, padding=20),
             ],
             size=50,
             )
