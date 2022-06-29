@@ -1,0 +1,44 @@
+CC = gcc
+NAME = minitol
+MINILIB_FLAGS = -framework openGL -framework AppKit #-lmlx
+CC_FLAGS = -Wall -Wextra -Werror
+SANITIZE = -fsanitize=address -g3
+VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
+SRC_DIR = srcs/
+OBJ_DIR = objs/
+INCLUDES = includes/
+LIBRARIES_DIR = libraries/
+
+LIBRARIES_FILES = libft
+SRC_FILES = client server
+
+SRC			=	$(addprefix $(SRC_DIR)), $(addsuffix .c, $(SRC_FILES))
+
+LIBRARIES	=	$(addprefix $(LIBRARIES_DIR), $(addsuffix .a, $(LIBRARIES_FILES)))
+
+all : $(NAME)
+
+OBJF = .cache_exists
+
+$(OBJF):
+	@mkdir libraries
+
+$(NAME) : $(SERVER) $(CLIENT)
+	@make -C libft
+
+
+$(OBJF):
+	@mkdir libraries
+server:
+	$(CC) $(CC_FLAGS) $(SRC_DIR)server.c -I $(INCLUDES) $(LIBRARIES) -o server.exec
+
+client:
+	$(CC) $(CC_FLAGS) $(SRC_DIR)client.c -I $(INCLUDES) $(LIBRARIES) -o client.exec
+
+$(OBJF):
+	@mkdir libraries
+
+clean:
+
+fclean:
+	@rm -rf $(LIBRARIES_DIR)
