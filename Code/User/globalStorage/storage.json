@@ -6,10 +6,10 @@
             "backupPath": "/home/bena/.config/Code/Backups/694d49e00d2c5b7dd66b156f660ba973",
             "uiState": {
                 "mode": 1,
-                "x": 8,
-                "y": 15,
-                "width": 1897,
-                "height": 987
+                "x": 0,
+                "y": 0,
+                "width": 1920,
+                "height": 1010
             }
         },
         "openedWindows": []
@@ -674,8 +674,7 @@
                 "items": [
                     {
                         "id": "workbench.action.navigateBack",
-                        "label": "&&Back",
-                        "enabled": false
+                        "label": "&&Back"
                     },
                     {
                         "id": "workbench.action.navigateForward",
@@ -684,8 +683,7 @@
                     },
                     {
                         "id": "workbench.action.navigateToLastEditLocation",
-                        "label": "&&Last Edit Location",
-                        "enabled": false
+                        "label": "&&Last Edit Location"
                     },
                     {
                         "id": "vscode.menubar.separator"
