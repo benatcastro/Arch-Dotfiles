@@ -117,7 +117,9 @@
       <eventcontext
          id="rect"
          style="fill:blue;"
-         usecurrent="1" />
+         usecurrent="1"
+         width="494.534594918799"
+         height="1020.58363065945" />
       <eventcontext
          id="3dbox"
          style="stroke:none;stroke-linejoin:round;"
@@ -1053,8 +1055,8 @@
   <group
      id="theme"
      defaultPreferDarkTheme="0"
-     defaultIconTheme="Adwaita"
-     defaultGtkTheme="Adwaita"
+     defaultIconTheme="DeepOcean"
+     defaultGtkTheme="Tokyonight-Dark"
      narrowSpinButton="1"
      preferDarkTheme="1"
      darkTheme="1"

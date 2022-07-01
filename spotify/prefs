@@ -1,9 +1,14 @@
+autologin.saved_credentials="{\"kzirqfikhqotag8dz9d06h001\":[\"kzirqfikhqotag8dz9d06h001\",\"iRm8tSy8fSp8Yp1Z66Pw5FNnsd88Ecnzt8P7oBVXRb3ezBnrmAXYZZmq2hx+oS+KD0UHECtJByK17fKtXNl42mHQH0yTK1dX9Ix17Bd1mPzPpO1RegxNVyOr9gowm/WOBE/DpwZFFo0z6yzGA6LqUTad3ez7qjJkM6V2bqU9nyEe2JAVP+4vPBXODFI9nzFVilNhz9jfaCu7m7vu+Um18oQDGBMOZ+SqGz92ZzLRhrx0Caf9wNG4kJmR/BEOPm3k\"]}"
+autologin.blob="iRm8tSy8fSp8Yp1Z66Pw5FNnsd88Ecnzt8P7oBVXRb3ezBnrmAXYZZmq2hx+oS+KD0UHECtJByK17fKtXNl42mHQH0yTK1dX9Ix17Bd1mPzPpO1RegxNVyOr9gowm/WOBE/DpwZFFo0z6yzGA6LqUTad3ez7qjJkM6V2bqU9nyEe2JAVP+4vPBXODFI9nzFVilNhz9jfaCu7m7vu+Um18oQDGBMOZ+SqGz92ZzLRhrx0Caf9wNG4kJmR/BEOPm3k"
+autologin.username="kzirqfikhqotag8dz9d06h001"
 app.window.position.saved=true
-app.window.position.height=482
+app.window.position.height=987
 app.autostart-mode=""
 app.window.position.y=15
-app.window.position.x=968
+app.window.position.x=8
+autologin.canonical_username="kzirqfikhqotag8dz9d06h001"
 storage.last-location="/home/bena/.cache/spotify/Storage"
 app.window.position.width=937
+core.clock_delta=0
 app.last-launched-version="1.1.84.716.gc5f8b819"
 app.autostart-configured=true

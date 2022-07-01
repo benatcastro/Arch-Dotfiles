@@ -1,0 +1,122 @@
+{
+  "version" : 1,
+  "symbols" : [
+    {
+      "symbol" : "TSLA",
+      "quoteType" : "EQUITY",
+      "shortName" : "Tesla, Inc.",
+      "exchange" : "NMS",
+      "marketState" : "POST",
+      "currency" : "USD",
+      "priceHint" : 2,
+      "regularMarketTime" : 1656619204,
+      "regularMarketPrice" : 673.41999999999996,
+      "regularMarketChange" : -12.049988000000001,
+      "regularMarketChangePercent" : -1.7579161999999999
+    },
+    {
+      "symbol" : "BTC-USD",
+      "quoteType" : "CRYPTOCURRENCY",
+      "shortName" : "Bitcoin USD",
+      "exchange" : "CCC",
+      "marketState" : "REGULAR",
+      "currency" : "USD",
+      "priceHint" : 2,
+      "regularMarketTime" : 1656630840,
+      "regularMarketPrice" : 18959.268,
+      "regularMarketChange" : -1175.0957000000001,
+      "regularMarketChangePercent" : -5.8362660000000002
+    },
+    {
+      "symbol" : "EURUSD=X",
+      "quoteType" : "CURRENCY",
+      "shortName" : "EUR/USD",
+      "exchange" : "CCY",
+      "marketState" : "REGULAR",
+      "currency" : "USD",
+      "priceHint" : 4,
+      "regularMarketTime" : 1656631000,
+      "regularMarketPrice" : 1.0482180000000001,
+      "regularMarketChange" : -0.000109910965,
+      "regularMarketChangePercent" : -0.010483920000000001
+    },
+    {
+      "symbol" : "AAPL",
+      "quoteType" : "EQUITY",
+      "shortName" : "Apple Inc.",
+      "exchange" : "NMS",
+      "marketState" : "POST",
+      "currency" : "USD",
+      "priceHint" : 2,
+      "regularMarketTime" : 1656619205,
+      "regularMarketPrice" : 136.72,
+      "regularMarketChange" : -2.5099944999999999,
+      "regularMarketChangePercent" : -1.8027686000000001
+    },
+    {
+      "symbol" : "GOOGL",
+      "quoteType" : "EQUITY",
+      "shortName" : "Alphabet Inc.",
+      "exchange" : "NMS",
+      "marketState" : "POST",
+      "currency" : "USD",
+      "priceHint" : 2,
+      "regularMarketTime" : 1656619204,
+      "regularMarketPrice" : 2179.2600000000002,
+      "regularMarketChange" : -54.770020000000002,
+      "regularMarketChangePercent" : -2.4516241999999999
+    },
+    {
+      "symbol" : "MSFT",
+      "quoteType" : "EQUITY",
+      "shortName" : "Microsoft Corporation",
+      "exchange" : "NMS",
+      "marketState" : "POST",
+      "currency" : "USD",
+      "priceHint" : 2,
+      "regularMarketTime" : 1656619204,
+      "regularMarketPrice" : 256.82999999999998,
+      "regularMarketChange" : -3.4300231999999999,
+      "regularMarketChangePercent" : -1.3179217999999999
+    },
+    {
+      "symbol" : "IBM",
+      "quoteType" : "EQUITY",
+      "shortName" : "International Business Machines",
+      "exchange" : "NYQ",
+      "marketState" : "POST",
+      "currency" : "USD",
+      "priceHint" : 2,
+      "regularMarketTime" : 1656619204,
+      "regularMarketPrice" : 141.19,
+      "regularMarketChange" : 0.47999599999999998,
+      "regularMarketChangePercent" : 0.34112399999999998
+    },
+    {
+      "symbol" : "INTC",
+      "quoteType" : "EQUITY",
+      "shortName" : "Intel Corporation",
+      "exchange" : "NMS",
+      "marketState" : "POST",
+      "currency" : "USD",
+      "priceHint" : 2,
+      "regularMarketTime" : 1656619204,
+      "regularMarketPrice" : 37.409999999999997,
+      "regularMarketChange" : 0.11999893,
+      "regularMarketChangePercent" : 0.32179922
+    },
+    {
+      "symbol" : "AMD",
+      "quoteType" : "EQUITY",
+      "shortName" : "Advanced Micro Devices, Inc.",
+      "exchange" : "NMS",
+      "marketState" : "POST",
+      "currency" : "USD",
+      "priceHint" : 2,
+      "regularMarketTime" : 1656619204,
+      "regularMarketPrice" : 76.469999999999999,
+      "regularMarketChange" : -1.5199966,
+      "regularMarketChangePercent" : -1.9489635000000001
+    }
+  ]
+}

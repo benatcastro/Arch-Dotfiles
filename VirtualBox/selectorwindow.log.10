@@ -1,0 +1,18 @@
+00:00:00.419055 VirtualBox GUI VM Selector Window 6.1.34 r150636 linux.amd64 (May 30 2022 06:37:05) release log
+00:00:00.419057 Log opened 2022-06-29T18:19:13.638835000Z
+00:00:00.419057 Build Type: release
+00:00:00.419058 OS Product: Linux
+00:00:00.419059 OS Release: 5.18.7-arch1-1
+00:00:00.419059 OS Version: #1 SMP PREEMPT_DYNAMIC Sat, 25 Jun 2022 20:22:01 +0000
+00:00:00.419069 DMI Product Name: BOHB-WAX9
+00:00:00.419072 DMI Product Version: M1190
+00:00:00.419075 Firmware type: UEFI
+00:00:00.419560 Secure Boot: Disabled
+00:00:00.419591 Host RAM: 7691MB (7.5GB) total, 7036MB (6.8GB) available
+00:00:00.419597 Executable: /usr/lib/virtualbox/VirtualBox
+00:00:00.419597 Process ID: 1058
+00:00:00.419598 Package type: LINUX_64BITS_GENERIC (OSE)
+00:00:00.419624 Qt version: 5.15.5
+00:00:00.435640 GUI: UIMediumEnumerator: Medium-enumeration started...
+00:00:00.435655 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:00:00.885896 GUI: UIDesktopWidgetWatchdog::sltHandleHostScreenAvailableGeometryCalculated: Screen 0 work area is actually resized to: 8x15 x 1897x987

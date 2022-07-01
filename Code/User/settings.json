@@ -13,4 +13,5 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "editor.tabSize": 4,
 	"editor.detectIndentation": false,
+	"editor.columnSelection": true,
 }
